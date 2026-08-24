@@ -583,7 +583,7 @@
           pill.animate(
             [{ transform: 'scale(1)' }, { transform: 'scale(1.045)' }, { transform: 'scale(1)' }],
             { delay: Math.min(dev.cfg.dur * 0.7, 250), duration: 300,
-              easing: 'cubic-bezier(0.3, 1.25, 0.6, 1)', composite: 'add' });
+              easing: 'cubic-bezier(0.25, 0.1, 0.25, 1)', composite: 'add' });
         }
       } else if (dev.cfg.greenStyle === 'swap') {
         // 교체: 살짝 내려가며 사라지고, 새 색으로 아래에서 다시 올라옴
@@ -607,7 +607,7 @@
           // 팝: 색 전환 + 스케일 펀치로 "도달" 이벤트감
           pill.animate(
             [{ transform: 'scale(1)' }, { transform: 'scale(1.045)' }, { transform: 'scale(1)' }],
-            { duration: 300, easing: 'cubic-bezier(0.3, 1.25, 0.6, 1)', composite: 'add' });
+            { duration: 300, easing: 'cubic-bezier(0.25, 0.1, 0.25, 1)', composite: 'add' });
         }
       }
     }
