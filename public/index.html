@@ -486,6 +486,11 @@
     <input type="range" id="th" min="0" max="60" step="2" value="10">
   </div>
 
+  <div class="group">
+    <label>바닥 도달 여유 <b id="bEarlyVal">0pt</b> <span style="color:var(--muted-foreground)">— 바닥 N pt 전부터 도달로 침</span></label>
+    <input type="range" id="bEarly" min="0" max="400" step="10" value="0">
+  </div>
+
   <div class="status">
     <div class="row"><span>버튼 상태</span><span id="stState" class="on">ON</span></div>
     <div class="row"><span>스크롤 방향</span><span id="stDir">—</span></div>
@@ -509,11 +514,12 @@
     ease: 'cubic-bezier(0, 0, 0.2, 1)',
     threshold: 10,
     alwaysOn: false,
+    bottomEarly: 0,
   };
   let stored = {};
   try { stored = JSON.parse(localStorage.getItem(CFG_KEY) || '{}'); } catch (e) {}
   const cfgs = {
-    A: { ...DEFAULTS, ...(stored.A || {}) },
+    A: { ...DEFAULTS, bottomEarly: 160, ...(stored.A || {}) },
     B: { ...DEFAULTS, alwaysOn: true, ...(stored.B || {}) },
   };
   function saveCfgs() { localStorage.setItem(CFG_KEY, JSON.stringify(cfgs)); }
@@ -630,7 +636,7 @@
     dev.lastY = y;
 
     const max = dev.vp.scrollHeight - dev.vp.clientHeight;
-    const atBottom = y >= max - 2;
+    const atBottom = y >= max - 2 - (dev.cfg.bottomEarly || 0);
     const atTop = y <= 2;
 
     if (dev === active) {
@@ -669,6 +675,8 @@
     document.getElementById('ease').value = c.ease;
     document.getElementById('th').value = c.threshold;
     document.getElementById('thVal').textContent = c.threshold + 'pt';
+    document.getElementById('bEarly').value = c.bottomEarly || 0;
+    document.getElementById('bEarlyVal').textContent = (c.bottomEarly || 0) + 'pt';
     document.querySelectorAll('.b-only').forEach(g => g.classList.toggle('hidden', active.id !== 'B'));
     const y = active.vp.scrollTop, max = active.vp.scrollHeight - active.vp.clientHeight;
     document.getElementById('stPos').textContent = `${Math.round(y)} / ${Math.round(max)}`;
@@ -735,6 +743,11 @@
   document.getElementById('th').addEventListener('input', e => {
     active.cfg.threshold = +e.target.value;
     document.getElementById('thVal').textContent = active.cfg.threshold + 'pt';
+    saveCfgs();
+  });
+  document.getElementById('bEarly').addEventListener('input', e => {
+    active.cfg.bottomEarly = +e.target.value;
+    document.getElementById('bEarlyVal').textContent = active.cfg.bottomEarly + 'pt';
     saveCfgs();
   });
   document.getElementById('reset').addEventListener('click', () => {
