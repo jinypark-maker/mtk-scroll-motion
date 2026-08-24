@@ -581,7 +581,7 @@
         applyTransition(dev);
         if (v && dev.cfg.greenStyle === 'pop') {
           pill.animate(
-            [{ transform: 'scale(1)' }, { transform: 'scale(1.045)' }, { transform: 'scale(1)' }],
+            [{ transform: 'scale(1)' }, { transform: 'scale(0.96)' }, { transform: 'scale(1)' }],
             { delay: Math.min(dev.cfg.dur * 0.7, 250), duration: 300,
               easing: 'cubic-bezier(0.25, 0.1, 0.25, 1)', composite: 'add' });
         }
@@ -606,7 +606,7 @@
         if (dev.cfg.greenStyle === 'pop') {
           // 팝: 색 전환 + 스케일 펀치로 "도달" 이벤트감
           pill.animate(
-            [{ transform: 'scale(1)' }, { transform: 'scale(1.045)' }, { transform: 'scale(1)' }],
+            [{ transform: 'scale(1)' }, { transform: 'scale(0.96)' }, { transform: 'scale(1)' }],
             { duration: 300, easing: 'cubic-bezier(0.25, 0.1, 0.25, 1)', composite: 'add' });
         }
       }
