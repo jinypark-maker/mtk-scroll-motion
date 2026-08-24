@@ -434,6 +434,14 @@
 <div class="panel" id="panel">
   <h2><span id="panelTitle">A안</span> 모션 옵션<span class="saved">설정 자동 저장</span></h2>
 
+  <div class="group b-only">
+    <label>표시 방식</label>
+    <div class="seg" id="segAlways">
+      <button data-v="scroll">스크롤 반응</button>
+      <button data-v="always">항상 표시</button>
+    </div>
+  </div>
+
   <div class="group">
     <label>모션 스타일</label>
     <div class="seg" id="segStyle">
@@ -500,12 +508,13 @@
     greenStyle: 'pop',
     ease: 'cubic-bezier(0, 0, 0.2, 1)',
     threshold: 10,
+    alwaysOn: false,
   };
   let stored = {};
   try { stored = JSON.parse(localStorage.getItem(CFG_KEY) || '{}'); } catch (e) {}
   const cfgs = {
     A: { ...DEFAULTS, ...(stored.A || {}) },
-    B: { ...DEFAULTS, ...(stored.B || {}) },
+    B: { ...DEFAULTS, alwaysOn: true, ...(stored.B || {}) },
   };
   function saveCfgs() { localStorage.setItem(CFG_KEY, JSON.stringify(cfgs)); }
 
@@ -632,6 +641,8 @@
     updateTitleColor(dev);
     setBottom(dev, atBottom);
 
+    if (dev.cfg.alwaysOn) { setShown(dev, true); dev.acc = 0; return; }
+
     if (atBottom || atTop) { setShown(dev, true); dev.acc = 0; return; }
 
     // 방향이 바뀌면 누적량 리셋
@@ -650,6 +661,7 @@
     document.getElementById('panelTitle').textContent = active.id + '안';
     document.querySelectorAll('#segStyle button').forEach(b => b.classList.toggle('on', b.dataset.v === c.style));
     document.querySelectorAll('#segGreen button').forEach(b => b.classList.toggle('on', b.dataset.v === c.greenStyle));
+    document.querySelectorAll('#segAlways button').forEach(b => b.classList.toggle('on', (b.dataset.v === 'always') === !!c.alwaysOn));
     document.getElementById('dur').value = c.dur;
     document.getElementById('durVal').textContent = c.dur + 'ms';
     document.getElementById('gDur').value = c.gDur;
@@ -692,6 +704,13 @@
     active.cfg.style = b.dataset.v;
     document.querySelectorAll('#segStyle button').forEach(x => x.classList.toggle('on', x === b));
     render(active); saveCfgs();
+  });
+  document.getElementById('segAlways').addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    active.cfg.alwaysOn = b.dataset.v === 'always';
+    document.querySelectorAll('#segAlways button').forEach(x => x.classList.toggle('on', x === b));
+    if (active.cfg.alwaysOn) setShown(active, true);
+    saveCfgs();
   });
   document.getElementById('segGreen').addEventListener('click', e => {
     const b = e.target.closest('button'); if (!b) return;
