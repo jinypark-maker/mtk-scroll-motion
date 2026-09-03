@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MTK 2nd Depth Motion</title>
+<title>MTK 2nd Depth Motion · 2026-08-24</title>
 <style>
   @font-face {
     font-family: 'Pretendard Variable';
-    src: url('assets/PretendardVariable.woff2') format('woff2-variations');
+    src: url('../assets/PretendardVariable.woff2') format('woff2-variations');
     font-weight: 45 920;
     font-display: swap;
   }
@@ -239,14 +239,12 @@
     will-change: transform, opacity;
   }
   .pill.green { background: #28C660; color: #fff; }
-  /* single unit 케이스: 버튼이 하단 고정이 아니라 콘텐츠 끝 20pt 아래(피그마 8252:1147 — y712) */
-  .pill.flow { top: 712px; bottom: auto; }
   /* 라벨은 피그마 텍스트 벡터 아웃라인 마스크 — 폰트 렌더링 차이 제거, 색은 currentColor */
   .pill .label {
     width: 163px; height: 14px;
     background: currentColor;
-    -webkit-mask: url('assets/pill-label-clean.svg') center / 163px 14px no-repeat;
-    mask: url('assets/pill-label-clean.svg') center / 163px 14px no-repeat;
+    -webkit-mask: url('../assets/pill-label-clean.svg') center / 163px 14px no-repeat;
+    mask: url('../assets/pill-label-clean.svg') center / 163px 14px no-repeat;
   }
 
   /* ── 스크롤 존 (녹화 중에만, 녹화 중인 안을 조작) ── */
@@ -387,7 +385,7 @@
 <body>
 
 <header class="topbar">
-  <div class="title">MTK 2nd Depth Motion</div>
+  <div class="title">MTK 2nd Depth Motion<small>2026-08-24 · A/B안 비교</small></div>
   <button class="iconbtn hist" id="histBtn" title="버전 히스토리">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M3 12a9 9 0 1 0 3-6.7"/>
@@ -399,17 +397,11 @@
 
 <main class="main">
   <div class="stage" id="stage">
-    <div class="devicewrap" data-dev="B">
+    <div class="devicewrap" data-dev="A">
       <div class="devhead">
-        <span class="caption">Full Feed</span>
+        <span class="caption">A. Full Width Bar</span>
         <span class="devbtns">
-          <button class="iconbtn rfr" data-rfr="B" title="처음부터 다시">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 12a9 9 0 1 1-2.64-6.36"/>
-              <polyline points="21 3 21 9 15 9"/>
-            </svg>
-          </button>
-          <button class="iconbtn opt" data-opt="B" title="모션 옵션">
+          <button class="iconbtn opt" data-opt="A" title="A안 모션 옵션">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
               <line x1="21" y1="4" x2="14" y2="4"/><line x1="10" y1="4" x2="3" y2="4"/>
               <line x1="21" y1="12" x2="12" y2="12"/><line x1="8" y1="12" x2="3" y2="12"/>
@@ -417,7 +409,7 @@
               <line x1="14" y1="2" x2="14" y2="6"/><line x1="8" y1="10" x2="8" y2="14"/><line x1="16" y1="18" x2="16" y2="22"/>
             </svg>
           </button>
-          <button class="iconbtn rec" data-rec="B" title="녹화">
+          <button class="iconbtn rec" data-rec="A" title="A안 녹화">
             <svg class="dot" viewBox="0 0 24 24" fill="none">
               <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/>
               <circle cx="12" cy="12" r="4.5" fill="#FF334B"/>
@@ -431,7 +423,46 @@
       </div>
       <div class="device">
         <div class="viewport" data-vp>
-          <img class="content" src="assets/content.png" alt="" draggable="false">
+          <img class="content" src="../assets/content.png" alt="" draggable="false">
+        </div>
+        <div class="softedge"><i class="se-light"></i><i class="se-dark"></i></div>
+        <div class="glassbtn"></div>
+        <canvas class="topnav" data-nav width="750" height="266"></canvas>
+        <div class="navtitle" data-navtitle></div>
+        <div class="navstatus" data-navstatus></div>
+        <div class="barbtn" data-btn>
+          <img src="../assets/btmbtn.png" alt="Explore more on Home" draggable="false">
+        </div>
+      </div>
+    </div>
+
+    <div class="devicewrap" data-dev="B">
+      <div class="devhead">
+        <span class="caption">B. Capsule</span>
+        <span class="devbtns">
+          <button class="iconbtn opt" data-opt="B" title="B안 모션 옵션">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <line x1="21" y1="4" x2="14" y2="4"/><line x1="10" y1="4" x2="3" y2="4"/>
+              <line x1="21" y1="12" x2="12" y2="12"/><line x1="8" y1="12" x2="3" y2="12"/>
+              <line x1="21" y1="20" x2="16" y2="20"/><line x1="12" y1="20" x2="3" y2="20"/>
+              <line x1="14" y1="2" x2="14" y2="6"/><line x1="8" y1="10" x2="8" y2="14"/><line x1="16" y1="18" x2="16" y2="22"/>
+            </svg>
+          </button>
+          <button class="iconbtn rec" data-rec="B" title="B안 녹화">
+            <svg class="dot" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/>
+              <circle cx="12" cy="12" r="4.5" fill="#FF334B"/>
+            </svg>
+            <svg class="stop" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="9" stroke="#FF334B" stroke-width="2"/>
+              <rect x="8.5" y="8.5" width="7" height="7" rx="1.5" fill="#FF334B"/>
+            </svg>
+          </button>
+        </span>
+      </div>
+      <div class="device">
+        <div class="viewport" data-vp>
+          <img class="content" src="../assets/content.png" alt="" draggable="false">
         </div>
         <div class="softedge"><i class="se-light"></i><i class="se-dark"></i></div>
         <div class="glassbtn"></div>
@@ -442,67 +473,24 @@
       </div>
     </div>
 
-    <div class="devicewrap" data-dev="S">
-      <div class="devhead">
-        <span class="caption">Single Unit Only</span>
-        <span class="devbtns">
-          <button class="iconbtn rfr" data-rfr="S" title="처음부터 다시">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 12a9 9 0 1 1-2.64-6.36"/>
-              <polyline points="21 3 21 9 15 9"/>
-            </svg>
-          </button>
-          <button class="iconbtn opt" data-opt="S" title="모션 옵션">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-              <line x1="21" y1="4" x2="14" y2="4"/><line x1="10" y1="4" x2="3" y2="4"/>
-              <line x1="21" y1="12" x2="12" y2="12"/><line x1="8" y1="12" x2="3" y2="12"/>
-              <line x1="21" y1="20" x2="16" y2="20"/><line x1="12" y1="20" x2="3" y2="20"/>
-              <line x1="14" y1="2" x2="14" y2="6"/><line x1="8" y1="10" x2="8" y2="14"/><line x1="16" y1="18" x2="16" y2="22"/>
-            </svg>
-          </button>
-          <button class="iconbtn rec" data-rec="S" title="녹화">
-            <svg class="dot" viewBox="0 0 24 24" fill="none">
-              <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/>
-              <circle cx="12" cy="12" r="4.5" fill="#FF334B"/>
-            </svg>
-            <svg class="stop" viewBox="0 0 24 24" fill="none">
-              <circle cx="12" cy="12" r="9" stroke="#FF334B" stroke-width="2"/>
-              <rect x="8.5" y="8.5" width="7" height="7" rx="1.5" fill="#FF334B"/>
-            </svg>
-          </button>
-        </span>
-      </div>
-      <div class="device">
-        <div class="viewport" data-vp>
-          <img class="content" src="assets/content-single.png" alt="" draggable="false">
-        </div>
-        <div class="softedge"><i class="se-light"></i><i class="se-dark"></i></div>
-        <div class="glassbtn"></div>
-        <canvas class="topnav" data-nav width="750" height="266"></canvas>
-        <div class="navtitle" data-navtitle></div>
-        <div class="navstatus" data-navstatus></div>
-        <button class="pill flow" data-btn aria-label="Explore more on Home"><span class="label"></span></button>
-      </div>
-    </div>
-
     <div class="scrollzone" id="zone">SCROLL · 여기서 스크롤</div>
   </div>
 </main>
 
 <div class="histpanel" id="histPanel">
   <h2>버전 히스토리</h2>
-  <span class="ver current">
+  <a class="ver" href="../index.html">
     <span class="d">2026-09-03 <span class="now">현재</span></span>
     <span class="n">최종안</span>
-  </span>
-  <a class="ver" href="versions/2026-08-24.html">
+  </a>
+  <span class="ver current">
     <span class="d">2026-08-24</span>
     <span class="n">A/B안 비교</span>
-  </a>
+  </span>
 </div>
 
 <div class="panel" id="panel">
-  <h2>모션 옵션<span class="saved">설정 자동 저장</span></h2>
+  <h2><span id="panelTitle">A안</span> 모션 옵션<span class="saved">설정 자동 저장</span></h2>
 
   <div class="group b-only">
     <label>표시 방식</label>
@@ -589,13 +577,13 @@
   let stored = {};
   try { stored = JSON.parse(localStorage.getItem(CFG_KEY) || '{}'); } catch (e) {}
   const cfgs = {
+    A: { ...DEFAULTS, bottomEarly: 160, ...(stored.A || {}) },
     B: { ...DEFAULTS, alwaysOn: true, ...(stored.B || {}) },
-    S: { ...DEFAULTS, alwaysOn: true, ...(stored.S || {}) },
   };
   function saveCfgs() { localStorage.setItem(CFG_KEY, JSON.stringify(cfgs)); }
 
   // ── 디바이스 모델 ──
-  const devs = ['B', 'S'].map(id => {
+  const devs = ['A', 'B'].map(id => {
     const wrap = document.querySelector(`[data-dev="${id}"]`);
     return {
       id,
@@ -612,27 +600,36 @@
       shown: true, isBottom: false, lastY: 0, acc: 0, navDark: false,
     };
   });
-  let active = devs[0];   // 옵션 패널이 바인딩된 안
+  const devA = devs[0], devB = devs[1];
+  let active = devA;   // 옵션 패널이 바인딩된 안
 
   function applyTransition(dev) {
     const c = dev.cfg;
     const t = `transform ${c.dur}ms ${c.ease}, opacity ${c.dur}ms ${c.ease}`;
-    const colorDur = c.greenStyle === 'fade' ? c.gDur : c.greenStyle === 'pop' ? 160 : 0;
-    dev.btn.style.transition = `${t}, background-color ${colorDur}ms ease, color ${colorDur}ms ease`;
+    if (dev.id === 'B') {
+      const colorDur = c.greenStyle === 'fade' ? c.gDur : c.greenStyle === 'pop' ? 160 : 0;
+      dev.btn.style.transition = `${t}, background-color ${colorDur}ms ease, color ${colorDur}ms ease`;
+    } else {
+      dev.btn.style.transition = t;
+    }
   }
 
   function render(dev) {
     const c = dev.cfg;
     const slide = c.style !== 'fade';
     const hideOp = c.style === 'slide' ? 1 : 0;
-    dev.btn.style.transform = `translateX(-50%) translateY(${dev.shown ? 0 : slide ? 100 : 0}px)`;
+    if (dev.id === 'A') {
+      dev.btn.style.transform = `translateY(${dev.shown ? 0 : slide ? '100%' : '0'})`;
+    } else {
+      dev.btn.style.transform = `translateX(-50%) translateY(${dev.shown ? 0 : slide ? 100 : 0}px)`;
+    }
     dev.btn.style.opacity = dev.shown ? 1 : hideOp;
     if (dev === active) updateStatus();
   }
 
   function updateStatus() {
     const st = document.getElementById('stState');
-    st.textContent = active.shown ? (active.isBottom ? 'ON · GREEN' : 'ON') : 'OFF';
+    st.textContent = active.shown ? (active.id === 'B' && active.isBottom ? 'ON · GREEN' : 'ON') : 'OFF';
     st.className = active.shown ? 'on' : 'off';
   }
 
@@ -646,7 +643,7 @@
   function setBottom(dev, v) {
     if (dev.isBottom === v) return;
     dev.isBottom = v;
-    {
+    if (dev.id === 'B') {
       const pill = dev.btn;
       if (!dev.shown) {
         // 버튼이 숨겨진 상태면 색은 즉시 교체(등장 시 흰→그린 깜빡임 방지),
@@ -706,7 +703,7 @@
     }
 
     updateTitleColor(dev);
-    if (atBottom) setBottom(dev, true); // 그린 래치 — 한번 도달하면 스크롤업에도 유지 (해제는 리셋 버튼)
+    setBottom(dev, atBottom);
 
     if (dev.cfg.alwaysOn) { setShown(dev, true); dev.acc = 0; return; }
 
@@ -725,6 +722,7 @@
   const panel = document.getElementById('panel');
   function syncPanel() {
     const c = active.cfg;
+    document.getElementById('panelTitle').textContent = active.id + '안';
     document.querySelectorAll('#segStyle button').forEach(b => b.classList.toggle('on', b.dataset.v === c.style));
     document.querySelectorAll('#segGreen button').forEach(b => b.classList.toggle('on', b.dataset.v === c.greenStyle));
     document.querySelectorAll('#segAlways button').forEach(b => b.classList.toggle('on', (b.dataset.v === 'always') === !!c.alwaysOn));
@@ -737,6 +735,7 @@
     document.getElementById('thVal').textContent = c.threshold + 'pt';
     document.getElementById('bEarly').value = c.bottomEarly || 0;
     document.getElementById('bEarlyVal').textContent = (c.bottomEarly || 0) + 'pt';
+    document.querySelectorAll('.b-only').forEach(g => g.classList.toggle('hidden', active.id !== 'B'));
     const y = active.vp.scrollTop, max = active.vp.scrollHeight - active.vp.clientHeight;
     document.getElementById('stPos').textContent = `${Math.round(y)} / ${Math.round(max)}`;
     updateStatus();
@@ -744,7 +743,7 @@
   document.querySelectorAll('[data-opt]').forEach(btn => {
     btn.addEventListener('click', e => {
       e.stopPropagation();
-      const dev = devs.find(x => x.id === btn.dataset.opt);
+      const dev = btn.dataset.opt === 'A' ? devA : devB;
       if (panel.classList.contains('open') && active === dev) {
         panel.classList.remove('open');
       } else {
@@ -809,39 +808,8 @@
     document.getElementById('bEarlyVal').textContent = active.cfg.bottomEarly + 'pt';
     saveCfgs();
   });
-  // ── 디바이스별 새로고침: 진입 직후 상태로 되돌리고 초기 모션 재생 ──
-  document.querySelectorAll('[data-rfr]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const dev = devs.find(x => x.id === btn.dataset.rfr);
-      dev.vp.scrollTop = 0;
-      dev.lastY = 0;
-      dev.acc = 0;
-      dev.isBottom = false;
-      dev.btn.style.transition = 'none';
-      dev.btn.classList.remove('green');
-      dev.shown = true;
-      render(dev);
-      void dev.btn.offsetWidth;
-      applyTransition(dev);
-      if (dev === active) updateStatus();
-      // 로드 완료 시점처럼 잠깐 뒤 초기 평가 — single unit은 흰→그린 전환 재생
-      setTimeout(() => handleScroll(dev), 500);
-    });
-  });
-
   document.getElementById('reset').addEventListener('click', () => {
-    // 리셋 = 테스트 재시작이므로 그린 래치도 즉시 해제
-    if (active.isBottom) {
-      active.isBottom = false;
-      active.btn.style.transition = 'none';
-      active.btn.classList.remove('green');
-      void active.btn.offsetWidth;
-      applyTransition(active);
-      updateStatus();
-    }
     active.vp.scrollTo({ top: 0, behavior: 'smooth' });
-    // 스크롤이 없는 케이스(single unit)는 리셋 직후 실제 상태(바닥 도달)를 다시 반영
-    if (active.vp.scrollHeight - active.vp.clientHeight < 3) handleScroll(active);
   });
 
   // ── 네비 화이트 키잉 + 타이틀 잉크 분리 ──
@@ -850,7 +818,7 @@
   const STATUS = { x: 30, y: 20, w: 700, h: 55 };   // 상태바 잉크 영역 (2x px)
   (async () => {
     const img = new Image();
-    img.src = 'assets/topnav.png';
+    img.src = '../assets/topnav.png';
     await img.decode();
     const work = document.createElement('canvas');
     work.width = 750; work.height = 266;
@@ -896,7 +864,7 @@
   let rowLum = null;
   (async () => {
     const img = new Image();
-    img.src = 'assets/content.png';
+    img.src = '../assets/content.png';
     await img.decode();
     const c = document.createElement('canvas');
     c.width = img.width; c.height = img.height;
@@ -956,7 +924,7 @@
   // ── 화면 녹화: 디바이스를 캔버스에 직접 렌더링해 mp4 저장 (캡처 권한 불필요) ──
   let navAssets = null;
   const labelImg = new Image();
-  labelImg.src = 'assets/pill-label-clean.svg';
+  labelImg.src = '../assets/pill-label-clean.svg';
 
   function toast(msg) {
     let t = document.getElementById('toast');
@@ -1045,7 +1013,9 @@
     if (op <= 0.003) return;
     const r = toPx(dev.btn.getBoundingClientRect());
     ctx.globalAlpha = op;
-    {
+    if (dev.id === 'A') {
+      ctx.drawImage(dev.btn.querySelector('img'), 0, 0, 750, 156, r.x, r.y, r.w, r.h);
+    } else {
       const rad = Math.min(r.h, r.w) * (48 / 92);
       ctx.fillStyle = cs.backgroundColor;
       ctx.beginPath();
@@ -1078,13 +1048,13 @@
       const b = x.wrap.querySelector('[data-rec]');
       b.classList.toggle('recording', on && x === dev);
       b.disabled = on && x !== dev;
-      b.title = on && x === dev ? '녹화 정지 (저장)' : '녹화';
+      b.title = on && x === dev ? '녹화 정지 (저장)' : `${x.id}안 녹화`;
     });
     fit();
   }
   document.querySelectorAll('[data-rec]').forEach(btn => {
     btn.addEventListener('click', () => {
-      const dev = devs.find(x => x.id === btn.dataset.rec);
+      const dev = btn.dataset.rec === 'A' ? devA : devB;
       if (recorder && recorder.state === 'recording') { recorder.stop(); return; }
       try {
         const cnv = document.createElement('canvas');
@@ -1121,9 +1091,9 @@
             a.href = URL.createObjectURL(blob);
             const t = new Date();
             const pad = n => String(n).padStart(2, '0');
-            a.download = `scroll-motion-${pad(t.getMonth() + 1)}${pad(t.getDate())}-${pad(t.getHours())}${pad(t.getMinutes())}${pad(t.getSeconds())}.${ext}`;
+            a.download = `scroll-motion-${dev.id}-${pad(t.getMonth() + 1)}${pad(t.getDate())}-${pad(t.getHours())}${pad(t.getMinutes())}${pad(t.getSeconds())}.${ext}`;
             a.click();
-            toast(`녹화 저장 완료 (${(blob.size / 1048576).toFixed(1)}MB ${ext})`);
+            toast(`${dev.id}안 녹화 저장 완료 (${(blob.size / 1048576).toFixed(1)}MB ${ext})`);
           }
           recorder = null;
           setRecUI(dev, false);
@@ -1136,7 +1106,7 @@
         recorder.start();
         setRecUI(dev, true);
         loop();
-        toast('녹화 중, 다시 누르면 저장돼요');
+        toast(`${dev.id}안 녹화 중 — 다시 누르면 저장돼요`);
       } catch (err) {
         setRecUI(dev, false);
         toast('녹화를 시작하지 못했어요: ' + err.message);
@@ -1149,7 +1119,7 @@
   const HEAD_H = 36 + 4; // devhead + 간격
   let curScale = 1;
   function fit() {
-    const zoneW = document.body.classList.contains('recmode') ? 56 + 72 : 0;
+    const zoneW = document.body.classList.contains('recmode') ? 24 + 72 : 0;
     const stageW = 375 * 2 + 56 + zoneW;
     const stageH = 812 + HEAD_H;
     const topH = document.querySelector('.topbar').offsetHeight;
@@ -1192,8 +1162,6 @@
 
   devs.forEach(dev => { dev.btn.style.transition = 'none'; render(dev); });
   requestAnimationFrame(() => devs.forEach(applyTransition));
-  // 초기 상태 평가 — 이미지 로드 후 (스크롤이 없는 single unit은 바로 그린)
-  addEventListener('load', () => devs.forEach(handleScroll));
 </script>
 </body>
 </html>
